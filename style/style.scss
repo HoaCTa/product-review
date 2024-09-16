@@ -1,0 +1,119 @@
+@import "./variable";
+
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin fontMontserrat($weight) {
+  font-family: "Montserrat", sans-serif;
+  font-weight: $weight;
+}
+
+@mixin fontFraunces($weight) {
+  font-family: "Fraunces", serif;
+  font-weight: $weight;
+}
+html {
+  margin: 0;
+  padding: 0;
+  background-color: $cream;
+  //   font-size: 14px;
+  font-size: clamp(5px, 4vw, 20px);
+  min-height: 100vh;
+  display: flex;
+}
+
+main {
+  @include flexCenter(column);
+  padding: 20px 5px;
+  height: 100%;
+}
+.container {
+  background-color: $white;
+  border-radius: 10px;
+  width: 95%;
+  @include flexCenter(column);
+  border: none;
+  border-radius: 10px;
+
+  img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .content {
+    padding: 10px;
+    padding-left: 35px;
+    padding-right: 30px;
+    .name-tag {
+      @include fontMontserrat(500);
+      font-size: 10px;
+      color: $dark-grayish-blue;
+      letter-spacing: 6px;
+    }
+    .perfume-name h2 {
+      @include fontFraunces(700);
+      font-size: 32px;
+      margin: 0px;
+    }
+
+    p {
+      color: $dark-grayish-blue;
+      @include fontMontserrat(500);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .prices {
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      align-items: center;
+      gap: 20px;
+      .original-price {
+        @include fontMontserrat(500);
+        font-size: 12px;
+        color: $dark-grayish-blue;
+        text-decoration: line-through;
+      }
+      .sale-price {
+        @include fontFraunces(700);
+        color: $dark-cyan;
+        font-size: 30px;
+        font-weight: bold;
+        margin: 20px 0px;
+      }
+    }
+
+    .shopping-cart-btn {
+      @include flexCenter(column);
+      button {
+        background: $dark-cyan;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        width: 300px;
+        height: auto;
+        color: $white;
+        border: none;
+
+        img {
+          width: 5%;
+          padding-right: 5px;
+          vertical-align: sub;
+        }
+      }
+    }
+  }
+}
+
+/* Media Query for Desktop */
+@media (min-width: 1024px) {
+  main {
+    @include flexCenter(column);
+  }
+}
